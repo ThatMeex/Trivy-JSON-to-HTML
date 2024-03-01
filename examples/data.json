@@ -1,27 +1,29 @@
 {
     "Resources": [
         {
-            "Results": {
-                "Target": "ubuntu:latest (ubuntu 22.04)",
-                "Vulnerabilities": [
-                    {
-                        "Library": "coreutils",
-                        "VulnerabilityID": "CVE-2016-2781",
-                        "Severity": "LOW",
-                        "InstalledVersion": "8.32-4.1ubuntu1",
-                        "FixedVersion": "",
-                        "Title": "coreutils: Non-privileged session can escape to the parent session in chroot"
-                    },
-                    {
-                        "Library": "testing_ignore",
-                        "VulnerabilityID": "CVE-2014-1234",
-                        "Severity": "CRITICAL",
-                        "InstalledVersion": "8.32-4.1ubuntu1",
-                        "FixedVersion": "",
-                        "Title": "x"
-                    }
-                ]
-            }
+            "Results": [
+                {
+                    "Target": "ubuntu:latest (ubuntu 22.04)",
+                    "Vulnerabilities": [
+                        {
+                            "Library": "coreutils",
+                            "VulnerabilityID": "CVE-2016-2781",
+                            "Severity": "LOW",
+                            "InstalledVersion": "8.32-4.1ubuntu1",
+                            "FixedVersion": "",
+                            "Title": "coreutils: Non-privileged session can escape to the parent session in chroot"
+                        },
+                        {
+                            "Library": "testing_ignore",
+                            "VulnerabilityID": "CVE-2014-1234",
+                            "Severity": "CRITICAL",
+                            "InstalledVersion": "8.32-4.1ubuntu1",
+                            "FixedVersion": "",
+                            "Title": "x"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

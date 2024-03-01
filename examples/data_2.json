@@ -1,19 +1,21 @@
 {
     "Resources": [
         {
-            "Results": {
-                "Target": "Test",
-                "Vulnerabilities": [
-                    {
-                        "Library": "Test",
-                        "VulnerabilityID": "CVE-2024-0001",
-                        "Severity": "SEVERE",
-                        "InstalledVersion": "Test v0.1",
-                        "FixedVersion": "Test v0.2",
-                        "Title": "Non-fix."
-                    }
-                ]
-            }
+            "Results": [
+                {
+                    "Target": "Test",
+                    "Vulnerabilities": [
+                        {
+                            "Library": "Test",
+                            "VulnerabilityID": "CVE-2024-0001",
+                            "Severity": "SEVERE",
+                            "InstalledVersion": "Test v0.1",
+                            "FixedVersion": "Test v0.2",
+                            "Title": "Non-fix."
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
