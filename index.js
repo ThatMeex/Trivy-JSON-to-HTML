@@ -42,16 +42,16 @@ function fileLoad(event) {
 
     resources.forEach((resource) => {
         const results = resource.Results;
-        if (!results) return console.warn("Empty results.");
+        if (!results || results.length == 0) return console.warn("Empty results.");
 
-        const vulnerabilities = results.Vulnerabilities;
-        if (!vulnerabilities || vulnerabilities.length == 0) return console.warn("Empty vulnerabilities.");
+        results.forEach((result) => {
+            const vulnerabilities = result.Vulnerabilities;
+            if (!vulnerabilities || vulnerabilities.length == 0) return console.warn("Empty vulnerabilities.");
 
-        vulnerabilities.forEach((vulnerability) => {
-            const { Target } = results;
-            const { Library, VulnerabilityID, Severity, InstalledVersion, FixedVersion, Title } = vulnerability;
+            vulnerabilities.forEach((vulnerability) => {
+                const { Target } = result;
+                const { Library, VulnerabilityID, Severity, InstalledVersion, FixedVersion, Title } = vulnerability;
 
-            for (let i = 0; i < 8000; i++) {
                 data.push([
                     Target || "",
                     Library || "",
@@ -61,7 +61,7 @@ function fileLoad(event) {
                     FixedVersion || "",
                     Title || ""
                 ]);
-            };
+            });
         });
     });
 
