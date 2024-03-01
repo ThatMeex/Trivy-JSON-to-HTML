@@ -11,7 +11,7 @@ data.insertBefore(fileInput, table);
 const Grid = gridjs.Grid;
 
 const grid = new Grid({
-    columns: ["Target", "Library/Package", "Vulnerability", "Severity", "Installed Version", "Fixed Version", "Title"],
+    columns: ["Namespace", "Target", "Package", "Installed Version", "Fixed Version", "Vulnerability", "Severity", "CVSS Score", "Title"],
     fixedHeader: true,
     height: "calc(100vh - 180px)",
     search: true,
@@ -38,27 +38,42 @@ function fileLoad(event) {
     let data = [];
 
     const resources = json.Resources
-    if (!resources || resources.length == 0) return console.warn("Empty resources.");
+    if (!resources || resources.length == 0) return;
 
     resources.forEach((resource) => {
         const results = resource.Results;
-        if (!results || results.length == 0) return console.warn("Empty results.");
+        if (!results || results.length == 0) return;
+
+        const { Namespace } = resource;
 
         results.forEach((result) => {
             const vulnerabilities = result.Vulnerabilities;
-            if (!vulnerabilities || vulnerabilities.length == 0) return console.warn("Empty vulnerabilities.");
+            if (!vulnerabilities || vulnerabilities.length == 0) return;
+
+            const { Target } = result;
 
             vulnerabilities.forEach((vulnerability) => {
-                const { Target } = result;
-                const { Library, VulnerabilityID, Severity, InstalledVersion, FixedVersion, Title } = vulnerability;
+                const {
+                    PkgName,
+                    InstalledVersion,
+                    FixedVersion,
+                    VulnerabilityID,
+                    Severity,
+                    CVSS,
+                    Title
+                } = vulnerability;
+
+                const score = CVSS?.nvd?.V3Score;
 
                 data.push([
-                    Target || "",
-                    Library || "",
-                    VulnerabilityID || "",
-                    Severity || "",
-                    InstalledVersion || "",
+                    Namespace,
+                    Target,
+                    PkgName,
+                    InstalledVersion,
                     FixedVersion || "",
+                    VulnerabilityID,
+                    Severity,
+                    score || "",
                     Title || ""
                 ]);
             });
